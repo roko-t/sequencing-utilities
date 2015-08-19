@@ -1,2 +1,25 @@
 This repository is for Utilities on Illumina sequencing.
 
+check_sheet.pl
+================
+SampleSheetが定められた書式で書かれているかを確認します。
+
+　＜確認していること＞
+(1) カラム数 :10
+(2) ヘッダ行のカラム名
+(3) Lane番号：1-8　
+(4) FCID : ランディレクトリ名の中の要素と一致している。
+(5) SampleID、SampleProject にspaceと下記の使用不許可文字と全角文字が含まれていないこと。
+      ? ( ) [ ] / \ = + < > : ; " ' , * ^ | & .
+    ※使用不許可文字の詳細はCASAVAのマニュアルの「Illegal Characters」の項をご参照ください。
+(6) Index：A or C or G or T
+(7) Lane内でindexが重複していないこと。
+(8) シート全体で行の重複がないこと。
+
+＜コマンド＞
+  ./check_sheet.pl <run_dir_name> <path_to_SampleSheet>
+     run_dir_name        : ランディレクトリ名
+     path_to_SampleSheet : SampleSheetファイルへのパス（絶対／相対パスどちらでも可）
+
+     例）150817_D00001_0033_B11111ACXX のSampleSheetを確認する
+         ./check_sheet.pl 150817_D00001_0033_B11111ACXX SampleSheet.csv
