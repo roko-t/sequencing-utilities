@@ -1,25 +1,25 @@
-This repository is for Utilities on Illumina sequencing.
+# This repository is for Utilities on Illumina sequencing.
 
 check_sheet.pl
 ================
-SampleSheet����߂�ꂽ�����ŏ�����Ă��邩���m�F���܂��B
+SampleSheetが定められた書式で書かれているかを確認します。
 
-�@���m�F���Ă��邱�Ɓ�
-(1) �J������ :10
-(2) �w�b�_�s�̃J������
-(3) Lane�ԍ��F1-8�@
-(4) FCID : �����f�B���N�g�����̒��̗v�f�ƈ�v���Ă���B
-(5) SampleID�ASampleProject ��space�Ɖ��L�̎g�p�s�������ƑS�p�������܂܂�Ă��Ȃ����ƁB
+　＜確認していること＞
+(1) カラム数 :10
+(2) ヘッダ行のカラム名
+(3) Lane番号：1-8　
+(4) FCID : ランディレクトリ名の中の要素と一致している。
+(5) SampleID、SampleProject にspaceと下記の使用不許可文字と全角文字が含まれていないこと。
       ? ( ) [ ] / \ = + < > : ; " ' , * ^ | & .
-    ���g�p�s�������̏ڍׂ�CASAVA�̃}�j���A���́uIllegal Characters�v�̍������Q�Ƃ��������B
-(6) Index�FA or C or G or T
-(7) Lane����index���d�����Ă��Ȃ����ƁB
-(8) �V�[�g�S�̂ōs�̏d�����Ȃ����ƁB
+    ※使用不許可文字の詳細はCASAVAのマニュアルの「Illegal Characters」の項をご参照ください。
+(6) Index：A or C or G or T
+(7) Lane内でindexが重複していないこと。
+(8) シート全体で行の重複がないこと。
 
-���R�}���h��
+＜コマンド＞
   ./check_sheet.pl <run_dir_name> <path_to_SampleSheet>
-     run_dir_name        : �����f�B���N�g����
-     path_to_SampleSheet : SampleSheet�t�@�C���ւ̃p�X�i��΁^���΃p�X�ǂ���ł��j
+     run_dir_name        : ランディレクトリ名
+     path_to_SampleSheet : SampleSheetファイルへのパス（絶対／相対パスどちらでも可）
 
-     ��j150817_D00001_0033_B11111ACXX ��SampleSheet���m�F����
+     例）150817_D00001_0033_B11111ACXX のSampleSheetを確認する
          ./check_sheet.pl 150817_D00001_0033_B11111ACXX SampleSheet.csv
